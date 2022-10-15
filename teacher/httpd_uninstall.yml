@@ -1,4 +1,5 @@
 ---
+## You are making mistake by not add extra vars
 - name: This playbooks to uninstall apache httpd
   hosts: centos
   become: yes
