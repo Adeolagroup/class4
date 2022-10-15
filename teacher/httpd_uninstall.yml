@@ -1,0 +1,10 @@
+---
+- name: This playbooks to uninstall apache httpd
+  hosts: centos
+  become: yes
+
+  tasks:
+    - name: uninstall apache on server
+      yum:
+        name: httpd
+        state: absent
