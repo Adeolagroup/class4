@@ -57,8 +57,8 @@
     dest: /opt/prometheus
     owner: root
     group: root
-#    mode: '0750'
-    mode: '0777'
+    mode: '0750'
+#    mode: '0777'
     remote_src: true
   when: artifacts.stat.exists
 
@@ -109,6 +109,12 @@
     mode: 0640
 #  tags:
 #    - template
+- name: update /opt/prometheus directory
+  ansible.builtin.file:
+    path: /opt/prometheus/prometheus.yml
+    owner: root
+    group: root
+    mode: 0777
 
 - name: reload systemd daemon
   ansible.builtin.systemd:
