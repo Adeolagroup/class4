@@ -29,16 +29,16 @@
 #    - loki
   when: not binary.stat.exists
 
-- name: update prometheus if different version is defined in variable
-  unarchive:
-    src: "https://github.com/prometheus/prometheus/releases/download/v\
-         {{  prometheus_version  }}/prometheus-{{  prometheus_version  }}.linux-amd64.tar.gz"
-    dest: /opt/prometheus/
-    remote_src: true
+#- name: update prometheus if different version is defined in variable
+#  unarchive:
+#    src: "https://github.com/prometheus/prometheus/releases/download/v\
+#         {{  prometheus_version  }}/prometheus-{{  prometheus_version  }}.linux-amd64.tar.gz"
+#    dest: /opt/prometheus/
+#    remote_src: true
 #  tags:
 #    - loki
-  when: (prometheus_version_check | regex_search('\d.\d+.\d+') != prometheus_version)
-  notify: restart prometheus
+#  when: (prometheus_version_check | regex_search('\d.\d+.\d+') != prometheus_version)
+#  notify: restart prometheus
 
 - name: check if install artifacts exist
   ansible.builtin.stat:
