@@ -1,0 +1,9 @@
+---
+- name: Playbooks to install prometheus, grafana and node-exporters on Linux
+  hosts: "{{ hosts_inventory }}"
+  become: yes
+  
+  roles:
+    - prometheus
+    - grafana 
+    - prometheus_node_exporter
