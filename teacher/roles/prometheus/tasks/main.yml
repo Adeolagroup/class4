@@ -14,13 +14,13 @@
   register: binary
 
 - name: check prometheus version
-  ansible.builtin.command: /opt/prometheus/prometheus --version
+  command: /opt/prometheus/prometheus --version
   register: prometheus_version_check
   when: binary.stat.exists
   changed_when: false
 
 - name: install prometheus if its not present
-  ansible.builtin.unarchive:
+  unarchive:
     src: "https://github.com/prometheus/prometheus/releases/download/v\
          {{  prometheus_version  }}/prometheus-{{  prometheus_version  }}.linux-amd64.tar.gz"
     dest: /opt/prometheus
@@ -30,7 +30,7 @@
   when: not binary.stat.exists
 
 - name: update prometheus if different version is defined in variable
-  ansible.builtin.unarchive:
+  unarchive:
     src: "https://github.com/prometheus/prometheus/releases/download/v\
          {{  prometheus_version  }}/prometheus-{{  prometheus_version  }}.linux-amd64.tar.gz"
     dest: /opt/prometheus/
