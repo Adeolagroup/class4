@@ -111,7 +111,7 @@
 #    - template
 - name: update /opt/prometheus directory
   ansible.builtin.file:
-    path: /opt/prometheus/prometheus.yml
+    path: /opt/prometheus/prometheus
     owner: root
     group: root
     mode: 0777
