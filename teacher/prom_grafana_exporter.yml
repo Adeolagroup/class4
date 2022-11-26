@@ -1,0 +1,27 @@
+---
+## This playbooks call roles for monitoring management
+- name: Playbooks to install prometheus, grafana and node-exporters on Linux
+  hosts: "{{ hosts_inventory }}"
+  become: yes
+
+  tasks:
+  - name: Include the prometheus roles
+    include_role:
+      name: prometheus
+  #  tags: prometheus
+
+#  - name: Include the grafana role
+#    include_role:
+#      name: grafana
+#    tags: grafana
+
+#  - name: Include the prometheus_node_exporter role
+#    include_role:
+#      name: prometheus_node_exporter
+#    tags: exporter
+
+
+#  roles:
+#    - prometheus
+#    - grafana
+#    - prometheus_node_exporter
