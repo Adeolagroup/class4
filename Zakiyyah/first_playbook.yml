@@ -1,0 +1,19 @@
+---
+- name: This playbook is to start write playbook.
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: create directory class4 in /tmp folder'
+      file:
+        path: /tmp/class4
+        state: directory
+        owner: class4
+        mode: "0777"
+
+    - name: add content to our first file.
+      copy:
+        content: "this is my first playbook"
+        dest: /tmp/class4/playbook.txt
+        
+           
