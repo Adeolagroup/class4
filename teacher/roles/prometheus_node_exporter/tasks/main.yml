@@ -69,3 +69,16 @@
     state: started
   tags:
     - restart
+
+- name: enable the node_exporter port on firewalld
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+  loop:
+    - 9191/tcp
+
+- name: reload the firewalld service
+  service:
+    name: firewalld
+    state: restarted
