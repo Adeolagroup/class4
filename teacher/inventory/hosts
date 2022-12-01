@@ -3,39 +3,53 @@ all:
     free_version:
       hosts:
         centos7.class4.com:
+          ansible_host: 192.168.1.20
         rocky.class4.com:
+          ansible_host: 192.168.1.21
     group7:
       hosts:
         centos7.class4.com:
+          ansible_host: 192.168.1.20
         rhel7.class4.com:
+          ansible_host: 192.168.1.22
     group8:
       hosts:
         rhel8.class4.com:
+          ansible_host: 192.168.1.23
         rocky.class4.com:
+          ansible_host: 192.168.1.21
     other:
       children:
         centos:
           hosts:
             centos7.class4.com:
+              ansible_host: 192.168.1.20
         rocky:
           hosts:
             rocky.class4.com:
+              ansible_host: 192.168.1.21
         ubuntu:
           hosts:
             ubuntu.class4.com:
+              ansible_host: 192.168.1.25
     redhat:
       children:
         centos:
           hosts:
             centos7.class4.com:
+              ansible_host: 192.168.1.20
         rhel:
           hosts:
             rhel7.class4.com:
+              ansible_host: 192.168.1.22
             rhel8.class4.com:
+              ansible_host: 192.168.1.23
             rhel9.class4.com:
+              ansible_host: 192.168.1.24
         rocky:
           hosts:
             rocky.class4.com:
+              ansible_host: 192.168.1.21
     grafana:
       hosts:
         grafana.adeolagroup.com:
