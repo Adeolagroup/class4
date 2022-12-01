@@ -1,0 +1,17 @@
+---
+- name: This playbook is to install apache httpd and start.
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install Apache on all server
+      yum:
+        name: httpd
+        state: latest
+
+    - name: make sure Apache is started and enabled
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
+           
