@@ -14,14 +14,3 @@
         name: httpd
         state: started
         enabled: yes
-
-
-- name: This playbook is to uninstall apache httpd and start.
-  hosts: all
-  become: yes
-
-  tasks:
-    - name: Uninstall Apache on all server
-      yum:
-        name: httpd
-        state: absent
