@@ -1,9 +1,10 @@
 ---
  - name: this playbook is to add a user to server
    hosts: all
+   become: yes 
 
    tasks:
-     ansible.builtin.user:
+       user:
        name: adebayo
        uid: 1099
        shell: /bin/bash
