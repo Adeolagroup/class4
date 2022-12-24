@@ -48,8 +48,16 @@ all:
               ansible_host: 192.168.1.24
         rocky:
           hosts:
-            rocky.class4.com:
+            rocky8.class5.com:
               ansible_host: 192.168.1.21
+            rocky9.class5.com:
+              ansible_host: 192.168.1.28              
+        alma:
+          hosts:
+            alma8.class5.com:
+              ansible_host: 192.168.1.26
+            alam9.class5.com:
+              ansible_host: 192.168.1.27
     grafana:
       hosts:
         grafana.adeolagroup.com:
