@@ -15,8 +15,7 @@
         state: started
         enabled: yes
 
-        #---
-- name: This playbook is to install apache httpd and start.
+- name: This playbook is to uninstall apache httpd and remove.
   hosts: all
   become: yes
 
