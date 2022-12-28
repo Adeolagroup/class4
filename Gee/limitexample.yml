@@ -1,0 +1,18 @@
+---
+- name: This playbook is to learn how to use limit
+  hosts: all
+  become: true
+
+  tasks:
+    - name: create directory in /tmp folder
+      file:
+        path: /tmp/example
+        state: directory
+        owner: Gee
+        group: Gee  
+        mode: "0777"  
+
+    - name: add content to our first file
+      copy:
+        content: "This is my first playbook for class4"
+        dest: /tmp/example/file1  

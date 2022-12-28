@@ -15,7 +15,12 @@
         state: started
         enabled: yes
 
+<<<<<<< HEAD
 - name: This playbook is to uninstall apache httpd and remove.
+=======
+
+- name: This playbook is to uninstall apache httpd and start.
+>>>>>>> 017dae742011d707d463dab7eeeda94b732d94bb
   hosts: all
   become: yes
 
@@ -24,4 +29,3 @@
       yum:
         name: httpd
         state: absent
-        

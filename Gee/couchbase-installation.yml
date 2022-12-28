@@ -1,0 +1,57 @@
+####  This Playbook is going to install couchbase community
+###Version 0.2
+---
+#- hosts: couchbase
+
+- name: Playbook to install couchbase on rocky servers
+  hosts: all 
+  become: yes
+
+  tasks:
+    - name: Download couchbase rpm package for rocky
+      get_url:
+        url: https://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-x86_64.rpm
+        dest: /tmp
+      when: (ansible_distribution == "rocky" or "RedHat" and ansible_distribution_major_version == "7")
+
+    - name: install the couchbase rpm package for rocky
+      yum:
+        name: yum install couchbase-server-community
+        state: present
+      when: (ansible_distribution == "rocky" or "RedHat" and ansible_distribution_major_version == "7")
+
+    - name: set security limit for couchbase processor on soft
+      pam_limits:
+        domain: couchbase
+        limit_type: soft
+        limit_item: nproc
+        value: 7500
+        dest: /etc/security/limits.d/10-couchbase.conf
+
+    - name: set security limit for couchbase processor on hard
+      pam_limits:
+        domain: couchbase
+        limit_type: hard
+        limit_item: nproc
+        value: 7500
+        dest: /etc/security/limits.d/10-couchbase.conf
+
+    - name: start and enable couchbase server
+      service:
+        name: couchbase-server
+        state: started
+        enabled: yes
+
+    - name: enable the couchbase port on firewalld
+      firewalld:
+        port: "{{ item }}"
+        permanent: yes
+        state: enabled
+      loop:
+        - 8091/tcp
+        - 21100/tcp
+
+    - name: reload the firewalld service
+      service:
+        name: firewalld
+        state: restarted

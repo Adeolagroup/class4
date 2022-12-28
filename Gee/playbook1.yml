@@ -1,0 +1,14 @@
+---
+- name: Copy file with owner and permissions
+  hosts: all
+  become: yes
+  tasks:
+
+    - name: copy file
+      ansible.builtin.copy:
+        src: /home/Gee/playbooks/class4/Zakiyyah
+        dest: /home/Gee/playbooks/class4/Gee
+        owner: Gee
+        group: Gee
+        mode: '0644'
+

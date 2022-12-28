@@ -5,9 +5,9 @@
   become: yes
 
   tasks:
-  - name: Include the prometheus roles
-    include_role:
-      name: prometheus
+#  - name: Include the prometheus roles
+#    include_role:
+#      name: prometheus
   #  tags: prometheus
 
 #  - name: Include the grafana role
@@ -15,9 +15,9 @@
 #      name: grafana
 #    tags: grafana
 
-#  - name: Include the prometheus_node_exporter role
-#    include_role:
-#      name: prometheus_node_exporter
+  - name: Include the prometheus_node_exporter role
+    include_role:
+      name: prometheus_node_exporter
 #    tags: exporter
 
 
