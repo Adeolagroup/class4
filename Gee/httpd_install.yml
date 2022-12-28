@@ -1,6 +1,6 @@
 ---
 - name: This playbooks to install apache httpd and start httpd on server
-  hosts: centos
+  hosts: all
   become: yes
 
   tasks:
