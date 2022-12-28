@@ -3,35 +3,22 @@
 ---
 #- hosts: couchbase
 
-- name: Playbook to install couchbase on centos servers
-  hosts: "{{ hosts_inventory }}"
+- name: Playbook to install couchbase on rocky servers
+  hosts: all 
   become: yes
 
   tasks:
-    - name: Download couchbase rpm package FOR CENTOS7
+    - name: Download couchbase rpm package for rocky
       get_url:
-        url: https://packages.couchbase.com/releases/6.6.0/couchbase-server-community-6.6.0-centos7.x86_64.rpm
+        url: https://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-x86_64.rpm
         dest: /tmp
-      when: (ansible_distribution == "CentOS" or "RedHat" and ansible_distribution_major_version == "7")
+      when: (ansible_distribution == "rocky" or "RedHat" and ansible_distribution_major_version == "7")
 
-    - name: install the couchbase rpm package for Centos7
+    - name: install the couchbase rpm package for rocky
       yum:
-        name: /tmp/couchbase-server-community-6.6.0-centos7.x86_64.rpm
+        name: yum install couchbase-server-community
         state: present
-      when: (ansible_distribution == "CentOS" or "RedHat" and ansible_distribution_major_version == "7")
-
-    - name: Download couchbase rpm package for centos8
-      get_url:
-        url: https://packages.couchbase.com/releases/6.6.0/couchbase-server-community-6.6.0-centos8.x86_64.rpm
-        dest: /tmp
-      when: (ansible_distribution == "Rocky" or "RedHat" and ansible_distribution_major_version == "8")
-
-    - name: install the couchbase rpm package for centos8
-      yum:
-        name: /tmp/couchbase-server-community-6.6.0-centos8.x86_64.rpm
-        state: present
-        disable_gpg_check: yes
-      when: (ansible_distribution == "Rocky" or "RedHat" and ansible_distribution_major_version == "8")
+      when: (ansible_distribution == "rocky" or "RedHat" and ansible_distribution_major_version == "7")
 
     - name: set security limit for couchbase processor on soft
       pam_limits:
