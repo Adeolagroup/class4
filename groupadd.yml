@@ -1,0 +1,12 @@
+---
+
+- name: this playbook will be used to create a group
+  hosts: all
+
+  tasks:
+  - name: create group "finance"
+    become: yes
+    groupadd:
+      name: finance
+  
+
