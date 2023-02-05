@@ -5,6 +5,4 @@
   tasks:
   - name: Add the user "Hassan"
     ansible.builtin.user:
-      name: Hassan
-      uid:1983
-     
+    name: Hassan
