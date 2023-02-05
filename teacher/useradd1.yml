@@ -3,6 +3,6 @@
   hosts: all
 
   tasks:
-  - name: Add the user "Mettel.net"
+  - name: Add the user
     ansible.builtin.user:
     name: Mettel.net
