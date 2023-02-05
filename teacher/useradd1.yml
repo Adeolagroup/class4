@@ -6,4 +6,5 @@
   tasks:
     - name: Add the user
       user:
-      name: Mettel.net
+      name: Mettel
+      ...
