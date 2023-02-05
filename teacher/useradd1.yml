@@ -6,5 +6,4 @@
   tasks:
     - name: Add the user
       user:
-      name: Mettel
-      ...
+      name: "Mettel"
