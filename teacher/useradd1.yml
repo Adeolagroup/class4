@@ -1,9 +1,11 @@
 ---
-- name: this playbook will be use to create a user on servers
+- name: Ensure Mettel is present
   hosts: all
   become: yes 
 
   tasks:
-    - name: Add the user
+    - name: add user
       user:
-      name: "Mettel"
+        name: Mettel
+        password: school1
+        state: present
