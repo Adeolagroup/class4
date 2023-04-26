@@ -1,0 +1,37 @@
+---
+- name: This playbook is to start using ansible lineinfile  module with playbook.
+  hosts: all
+  become: yes
+  tasks:
+    
+    - name: install httpd to use the configuration file.
+      ansible.legacy.yum:
+        name: httpd
+        state: present
+
+
+    - name: install httpd to use the configuration file.
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: Ensure SELinux is set to enforcing mode
+      ansible.builtin.lineinfile:
+        path: /etc/selinux/config
+        regexp: '^SELINUX='
+        line: SELINUX=enforcing
+
+    - name: Make sure group wheel is not in the sudoers configuration
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers
+        state: absent
+        regexp: '^%wheel'
+
+    - name: Ensure the default Apache port is 8080
+      ansible.builtin.lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^Listen '
+        insertafter: '^#Listen '
+        line: Listen 8080
+

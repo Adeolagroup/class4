@@ -2,26 +2,28 @@
 - name: This playbook is to start using ansible copy module with playbook.
   hosts: all
   become: yes
-
   tasks:
-     - name: Copy file with owner and permissions
-       copy:
-         src: /srv/myfiles/foo.conf
-         dest: /etc/foo.conf
-         owner: foo
-         group: foo
-         mode: '0644'
 
-     - name: Copy file with owner and permission, using symbolic representation
-       copy:
-         src: /srv/myfiles/foo.conf
-         dest: /etc/foo.conf
-         owner: foo
-         group: foo
-         mode: u=rw,g=r,o=r
+    - name: copy file
+      ansible.builtin.copy:
+        src: /home/class4/playbooks/class4/Zakiyyah
+        dest: /tmp/
+        owner: student       
+        group: student
+        mode: '0644'
 
-     - name: Copy using inline content
-       copy:
-         content: 'i create content inside a file with copy module in playbook'
-         dest: /tmp/file1.txt
+    - name: Copy file with owner and permission, using symbolic representation
+      ansible.builtin.copy:
+        src: /srv/myfiles/foo.conf
+        dest: /etc/foo.conf
+        owner: foo
+        group: foo
+        mode: u=rw,g=r,o=r
 
+    - name: Another symbolic mode example, adding some permissions and removing others
+      ansible.builtin.copy:
+        src: /srv/myfiles/foo.conf
+        dest: /etc/foo.conf
+        owner: foo
+        group: foo
+        mode: u+rw,g-wx,o-rwx
