@@ -4,7 +4,7 @@ all:
       hosts:
         centos7.class5.com:
           ansible_host: 192.168.1.20
-        rocky.class5.com:
+        rocky8.class5.com:
           ansible_host: 192.168.1.21
     group7:
       hosts:
@@ -16,7 +16,7 @@ all:
       hosts:
         rhel8.class5.com:
           ansible_host: 192.168.1.23
-        rocky.class5.com:
+        rocky8.class5.com:
           ansible_host: 192.168.1.21
     other:
       children:
@@ -26,7 +26,7 @@ all:
               ansible_host: 192.168.1.20
         rocky:
           hosts:
-            rocky.class5.com:
+            rocky8.class5.com:
               ansible_host: 192.168.1.21
         ubuntu:
           hosts:

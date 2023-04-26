@@ -1,10 +1,11 @@
 ---
- - name: this playbook is to add a user to server
-   hosts: all
-   become: yes 
+- name: Ensure Mettel is present
+  hosts: all
+  become: yes 
 
-   tasks:
-       user:
-       name: adebayo
-       uid: 1099
-       shell: /bin/bash
+  tasks:
+    - name: add user
+      user:
+        name: Mettel
+        password: school1
+        state: present

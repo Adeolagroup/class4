@@ -1,0 +1,43 @@
+Ansible playbook to setup users and groups
+
+
+
+---
+- name: i want to create  users and groups
+  hosts: all
+  become: yes
+  tasks:
+    - name: create group
+      group:
+        name: Scrum
+        state: present
+    - name: create group
+      group:
+        name: Devops
+        state: present
+    - name: create group
+      group:
+        name: Linux
+        state: present
+    - name: create user
+      user:
+        name: bariou
+        groups: Scrum, Devops, Linux
+    - name: create user
+      user:
+        name: nadia
+        group: Devops
+    - name: create user
+      user:
+        name: amede
+        group: Linux
+    - name: create user
+      user:
+        name: gee
+        group: Linux
+    - name: create user
+      user:
+        name: toyin
+        groups: Linux, Devops
+
+
